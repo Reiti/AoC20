@@ -5,7 +5,7 @@ import scala.annotation.tailrec
 object Day1 {
   def main(args: Array[String]): Unit = {
     val expenses: List[Int] = Util.loadDayInts(1);
-    
+
     //Part 1
     println(sumToX(expenses, 2020).get)
     

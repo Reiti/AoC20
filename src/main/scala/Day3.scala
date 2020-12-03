@@ -20,9 +20,9 @@ object Day3 {
     def countTreesH(x: Int, y: Int, acc: Int): Int = {
       val xPos: Int = (x + slopeX) % map(0).size
       val yPos: Int = y + slopeY
-      if yPos >= map.size 
+      if yPos >= map.size then
         acc
-      else if map(yPos)(xPos) == '#'
+      else if map(yPos)(xPos) == '#' then
         countTreesH(xPos, yPos, acc + 1)
       else
         countTreesH(xPos, yPos, acc)
