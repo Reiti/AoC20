@@ -36,11 +36,11 @@ object Day4 {
           case s"hgt:${value}cm" =>
             150 <= value && value <= 193
           case s"hcl:#$value" =>
-            value.size == 6 && value.forall((('0' to '9') ++ ('a' to 'f')) contains _)
+            value.matches("^[0-9a-f]{6}$")
           case s"ecl:$value" =>
             List("amb", "blu", "brn", "gry", "grn", "hzl", "oth") contains value
           case s"pid:$value" =>
-            value.size == 9 && value.forall(('0' to '9') contains _)
+            value.matches("^[0-9]{9}$")
           case value => false
         }
         case None => false
