@@ -7,9 +7,9 @@ object Day6 {
       .map(_.split("\n").map(_.toSet))
     
     //Part 1
-    println(answers.map(_.foldLeft(Set[Char]())(_ union _)).map(_.size).sum)
+    println(answers.map(_.reduce(_ union _)).map(_.size).sum)
     
     //Part 2
-    println(answers.map(group => group.reduce(_ intersect _)).map(_.size).sum)
+    println(answers.map(_.reduce(_ intersect _)).map(_.size).sum)
   }
 }
