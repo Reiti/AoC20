@@ -27,12 +27,14 @@ object Util {
 
   def loadDayInts(day: Int): List[Int] = loadDayLines(day).map(_.toInt)
 
-  def loadDayProgram(day: Int): Map[Long, Long] =
-    Util.loadDay(day)
-    .split(",")
-    .map { x => x.toLong }
-    .zipWithIndex
-    .map { x => (x._2.toLong, x._1) }.toMap
+  def loadDayProgram(day: Int): Map[Int, (String, Int)] =
+    Util.loadDayLines(day)
+      .map {l => 
+        val split = l.split(" ")
+        (split(0), split(1).toInt)
+      }
+      .zipWithIndex
+      .map { x => (x._2, x._1) }.toMap
 
   @tailrec
   def gcd(a: Long, b: Long): Long = {
