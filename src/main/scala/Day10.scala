@@ -9,18 +9,20 @@ object Day10 {
     //Part 1
     println(differences.count(_ == 1) * (differences.count(_ == 3)))
     
-    val splitIndizes: List[Int] = differences.zipWithIndex.filter(_._1 == 3).map(_._2 + 1)
+    val blockIndizes: List[Int] = differences.zipWithIndex.filter(_._1 == 3).map(_._2 + 1)
     
-    val partialLists: List[List[Int]] = (0 +: splitIndizes).sliding(2).map(bounds => adapters.slice(bounds(0), bounds(1))).toList
+    val blockSizes: List[Int] = (0 +: blockIndizes).sliding(2).map(bounds => bounds(1) - bounds(0)).toList
     
     //Part 2
-    println(partialLists.map(paths).product)
+    println(blockSizes.map(paths).product)
   }
   
-  def paths(adapters: List[Int]): BigInt = {
-    if adapters.size > 1 then
-      (1 to 3).map(idx => adapters.drop(idx)).map(paths).sum
-    else
-      adapters.size
+  def paths(n: Int): BigInt = {
+    if n > 1 then
+      (1 to 3).map(hop => n - hop).map(paths).sum
+    else if n < 0 then
+      0
+    else 
+      n
   }
 }
