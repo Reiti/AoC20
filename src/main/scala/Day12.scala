@@ -71,7 +71,4 @@ object Day12 {
     }
     case _ => (xc, yc)
   }
-  
-  
-  
 }
