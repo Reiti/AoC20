@@ -3,7 +3,6 @@ import util.Util
 import scala.annotation.tailrec
 
 object Day12 {
-  
   def main(args: Array[String]): Unit = {
     val instructions: List[String] = Util.loadDayLines(12)
     
